@@ -33,7 +33,7 @@ Smart Agent API 是一个智能对话系统,能够理解用户的自然语言问
 
 ## 📁 项目结构
 
-\`\`\`
+```
 smart-agent-api/
 ├── agents/              # Agent 编排层
 │   ├── agent.py        # Agent 核心逻辑
@@ -60,7 +60,7 @@ smart-agent-api/
 ├── .env.example         # 环境变量模板
 ├── .gitignore          # Git 忽略配置
 └── DEPLOYMENT.md        # 部署指南
-\`\`\`
+```
 
 ## 🚀 快速开始
 
@@ -73,20 +73,20 @@ smart-agent-api/
 
 1. **克隆项目**
 
-\`\`\`bash
+```bash
 git clone https://github.com/cjiao100/smart-agent-api.git
 cd smart-agent-api
-\`\`\`
+```
 
 2. **安装依赖**
 
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 3. **配置环境变量**
 
-\`\`\`bash
+```bash
 # 复制环境变量模板
 cp .env.example .env
 
@@ -95,15 +95,15 @@ cp .env.example .env
 # - 和风天气: https://dev.qweather.com/
 # - 天行数据: https://www.tianapi.com/
 # - OpenRouter: https://openrouter.ai/
-\`\`\`
+```
 
 4. **运行项目**
 
-\`\`\`bash
+```bash
 python main.py
-\`\`\`
+```
 
-服务将在 \`http://localhost:8000\` 启动。访问 \`http://localhost:8000/docs\` 查看 API 文档。
+服务将在 `http://localhost:8000` 启动。访问 `http://localhost:8000/docs` 查看 API 文档。
 
 ## ⚙️ 环境配置
 
@@ -111,22 +111,22 @@ python main.py
 
 | 变量名 | 说明 | 获取方式 |
 |--------|------|----------|
-| \`QWEATHER_API_KEY\` | 和风天气 API 密钥 | [注册获取](https://dev.qweather.com/) |
-| \`QWEATHER_BASE_URL\` | 和风天气 API 地址 | 默认: \`https://devapi.qweather.com/v7\` |
-| \`TIAN_API_KEY\` | 天行数据 API 密钥 | [注册获取](https://www.tianapi.com/) |
-| \`TIAN_API_BASE_URL\` | 天行数据 API 地址 | 默认: \`https://api.tianapi.com\` |
-| \`OPENROUTER_API_KEY\` | OpenRouter API 密钥 | [注册获取](https://openrouter.ai/) |
-| \`OPENROUTER_BASE_URL\` | OpenRouter API 地址 | 默认: \`https://openrouter.ai/api/v1\` |
+| `QWEATHER_API_KEY` | 和风天气 API 密钥 | [注册获取](https://dev.qweather.com/) |
+| `QWEATHER_BASE_URL` | 和风天气 API 地址 | 默认: `https://devapi.qweather.com/v7` |
+| `TIAN_API_KEY` | 天行数据 API 密钥 | [注册获取](https://www.tianapi.com/) |
+| `TIAN_API_BASE_URL` | 天行数据 API 地址 | 默认: `https://api.tianapi.com` |
+| `OPENROUTER_API_KEY` | OpenRouter API 密钥 | [注册获取](https://openrouter.ai/) |
+| `OPENROUTER_BASE_URL` | OpenRouter API 地址 | 默认: `https://openrouter.ai/api/v1` |
 
 ### 可选的环境变量
 
 | 变量名 | 说明 | 默认值 |
 |--------|------|--------|
-| \`APP_NAME\` | 应用名称 | \`MultiTaskQAAssistant\` |
-| \`APP_VERSION\` | 应用版本 | \`1.0.0\` |
-| \`LOG_LEVEL\` | 日志级别 (DEBUG/INFO/WARNING/ERROR) | \`INFO\` |
-| \`MAX_CONVERSATION_HISTORY\` | 最大对话历史记录数 | \`50\` |
-| \`CACHE_TTL\` | 缓存过期时间(秒) | \`3600\` |
+| `APP_NAME` | 应用名称 | `MultiTaskQAAssistant` |
+| `APP_VERSION` | 应用版本 | `1.0.0` |
+| `LOG_LEVEL` | 日志级别 (DEBUG/INFO/WARNING/ERROR) | `INFO` |
+| `MAX_CONVERSATION_HISTORY` | 最大对话历史记录数 | `50` |
+| `CACHE_TTL` | 缓存过期时间(秒) | `3600` |
 
 详细的环境变量说明请参考 [.env.example](.env.example) 文件。
 
@@ -134,23 +134,23 @@ python main.py
 
 ### 1. 聊天接口
 
-**POST** \`/chat\`
+**POST** `/chat`
 
 发送消息并获取 AI 回复。
 
 **请求参数:**
 
-\`\`\`json
+```json
 {
   "session_id": "demo-session",
   "message": "北京今天天气怎么样?",
   "output_format": "text"  // 可选: "text" 或 "json"
 }
-\`\`\`
+```
 
 **响应示例:**
 
-\`\`\`json
+```json
 {
   "session_id": "demo-session",
   "answer": "北京今天天气晴朗,温度 25°C,适合出行。",
@@ -164,17 +164,17 @@ python main.py
     "tool_calls": 1
   }
 }
-\`\`\`
+```
 
 ### 2. 历史记录接口
 
-**GET** \`/history/{session_id}\`
+**GET** `/history/{session_id}`
 
 获取指定会话的聊天历史。
 
 **响应示例:**
 
-\`\`\`json
+```json
 {
   "session_id": "demo-session",
   "messages": [
@@ -188,20 +188,20 @@ python main.py
     }
   ]
 }
-\`\`\`
+```
 
 ### API 文档
 
 启动服务后,访问以下地址查看完整的 API 文档:
 
-- **Swagger UI**: \`http://localhost:8000/docs\`
-- **ReDoc**: \`http://localhost:8000/redoc\`
+- **Swagger UI**: `http://localhost:8000/docs`
+- **ReDoc**: `http://localhost:8000/redoc`
 
 ## 💡 使用示例
 
 ### 天气查询
 
-\`\`\`bash
+```bash
 curl -X POST "http://localhost:8000/chat" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -209,11 +209,11 @@ curl -X POST "http://localhost:8000/chat" \\
     "message": "上海明天天气如何?",
     "output_format": "text"
   }'
-\`\`\`
+```
 
 ### 新闻查询
 
-\`\`\`bash
+```bash
 curl -X POST "http://localhost:8000/chat" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -221,11 +221,11 @@ curl -X POST "http://localhost:8000/chat" \\
     "message": "最近有什么科技新闻?",
     "output_format": "json"
   }'
-\`\`\`
+```
 
 ### 上下文追问
 
-\`\`\`bash
+```bash
 # 第一轮
 curl -X POST "http://localhost:8000/chat" \\
   -H "Content-Type: application/json" \\
@@ -235,13 +235,13 @@ curl -X POST "http://localhost:8000/chat" \\
 curl -X POST "http://localhost:8000/chat" \\
   -H "Content-Type: application/json" \\
   -d '{"session_id": "user123", "message": "那明天呢?"}'
-\`\`\`
+```
 
 ## 🏗️ 系统架构
 
 ### 架构设计
 
-\`\`\`
+```
 ┌─────────────┐
 │   Client    │
 └──────┬──────┘
@@ -273,7 +273,7 @@ curl -X POST "http://localhost:8000/chat" \\
 ┌─────────────────────────────────────┐
 │      State Management (Memory)      │
 └─────────────────────────────────────┘
-\`\`\`
+```
 
 ### 核心组件
 
@@ -286,7 +286,7 @@ curl -X POST "http://localhost:8000/chat" \\
 
 ### 工作流程
 
-1. 用户通过 \`/chat\` 接口发送消息
+1. 用户通过 `/chat` 接口发送消息
 2. Agent Router 分析消息,决定是否需要调用工具
 3. 如需调用工具,从 Tool Registry 获取并执行对应工具
 4. 将工具结果和上下文传递给 LLM 生成自然语言回复
@@ -314,14 +314,14 @@ curl -X POST "http://localhost:8000/chat" \\
 
 ### 添加新工具
 
-1. 在 \`tools/\` 目录创建新的工具文件
+1. 在 `tools/` 目录创建新的工具文件
 2. 实现工具的核心逻辑
-3. 在 \`tools/registry.py\` 中注册工具
-4. 在 \`tools/lc_tools.py\` 中添加 LangChain 工具适配
+3. 在 `tools/registry.py` 中注册工具
+4. 在 `tools/lc_tools.py` 中添加 LangChain 工具适配
 
 示例:
 
-\`\`\`python
+```python
 # tools/my_tool.py
 def my_tool_handler(param: str) -> dict:
     """工具处理逻辑"""
@@ -335,11 +335,11 @@ TOOL_REGISTRY = {
         "handler": my_tool_handler
     }
 }
-\`\`\`
+```
 
 ### 运行测试
 
-\`\`\`bash
+```bash
 # 安装测试依赖
 pip install pytest pytest-cov
 
@@ -348,14 +348,14 @@ pytest
 
 # 生成覆盖率报告
 pytest --cov=. --cov-report=html
-\`\`\`
+```
 
 ### 日志配置
 
-项目使用自定义的日志系统,日志文件保存在 \`logs/\` 目录:
+项目使用自定义的日志系统,日志文件保存在 `logs/` 目录:
 
-- \`app.log\` - 应用日志
-- 日志级别通过 \`LOG_LEVEL\` 环境变量控制
+- `app.log` - 应用日志
+- 日志级别通过 `LOG_LEVEL` 环境变量控制
 
 ## 📊 性能优化
 
@@ -373,18 +373,6 @@ pytest --cov=. --cov-report=html
 - [ ] 添加监控和追踪 (OpenTelemetry)
 - [ ] 支持多模态输入 (图片、语音)
 - [ ] 实现工具组合和链式调用
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 Pull Request!
-
-### 贡献指南
-
-1. Fork 本仓库
-2. 创建特性分支 (\`git checkout -b feature/AmazingFeature\`)
-3. 提交更改 (\`git commit -m 'Add some AmazingFeature'\`)
-4. 推送到分支 (\`git push origin feature/AmazingFeature\`)
-5. 开启 Pull Request
 
 ## 📄 许可证
 
